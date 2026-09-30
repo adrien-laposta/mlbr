@@ -1,0 +1,46 @@
+likelihood:
+  MLBRLike.BandpowerLike:
+    sacc_file: /scratch/gpfs/SIMONSOBS/external_data_e2e/v4_paper/spectra/south/science/sat_data_from_uncalibrated_maps/satp1__satp3__ext_data_filtered_satp3_f090/analysis_mask_satp1_satp3__mask_gal060_w_PS_mask_from_planck_catalog_030_source_168_kx15_TEST/saccs/cl_and_cov_sacc_rotated_calibrated.fits
+    lmin: 30
+    lmax: 300
+    nu0_dust: 353.0
+    nu0_sync: 23.0
+    tracers:
+      - satp1_f090_south_science
+      - satp1_f150_south_science
+      - satp3_f090_south_science
+      - satp3_f150_south_science
+      - wmap_f023_filtered_satp3_f090_south_science
+      - wmap_f033_filtered_satp3_f090_south_science
+      - planck_f030_filtered_satp3_f090_south_science
+      - planck_f100_filtered_satp3_f090_south_science
+      - planck_f143_filtered_satp3_f090_south_science
+      - planck_f217_filtered_satp3_f090_south_science
+      - planck_f353_filtered_satp3_f090_south_science
+
+params:
+  temp_dust: 20.0
+  beta_dust:
+    prior:
+      dist: norm
+      loc: 1.5
+      scale: 1.0
+    ref: 1.5
+    latex: \beta_{\mathrm{dust}}
+  
+  beta_sync:
+    prior:
+      dist: norm
+      loc: -3.0
+      scale: 0.5
+    ref: -3.0
+    latex: \beta_{\mathrm{sync}}
+  
+sampler:
+  mcmc:
+    max_tries: 1e3
+    Rminus1_stop: 0.005
+    Rminus1_cl_stop: 0.01
+
+output: test/chains_positive
+force: True
