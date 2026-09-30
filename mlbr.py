@@ -144,12 +144,12 @@ def compsep_dict(s, components):
         "clcov_ee_cmb": cov_ML[0*len(lb):1*len(lb), 0*len(lb):1*len(lb)]
     }
     for j, comp in enumerate(components):
-        ML_dict[f"cl_ee_{comp}"] = ps_ML[(2 + j)*len(lb):(2 + j + 1)*len(lb)]
-        ML_dict[f"cl_bb_{comp}"] = ps_ML[(2 + j + 1)*len(la):(2 + j + 2)* len( lb)]
-        ML_dict[f"clerr_ee_{comp}"] = np.sqrt(cov_ML[(2 + j)* len( lb):(2 + j + 1)* len( lb), (2 + j)* len( lb):(2 + j + 1)* len( lb)].diagonal())
-        ML_dict[f"clerr_bb_{comp}"] = np.sqrt(cov_ML[(2 + j + 1)* len( lb):(2 + j + 2)* len( lb), (2 + j + 1)* len( lb):(2 + j + 2)* len( lb)].diagonal())
-        ML_dict[f"clcov_ee_{comp}"] = cov_ML[(2 + j)* len( lb):(2 + j + 1)* len( lb), (2 + j)* len( lb):(2 + j + 1)* len( lb)]
-        ML_dict[f"clcov_bb_{comp}"] = cov_ML[(2 + j + 1)* len( lb):(2 + j + 2)* len( lb), (2 + j + 1)* len( lb):(2 + j + 2)* len( lb)]
+        ML_dict[f"cl_ee_{comp}"] = ps_ML[(2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb)]
+        ML_dict[f"cl_bb_{comp}"] = ps_ML[(2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb)]
+        ML_dict[f"clerr_ee_{comp}"] = np.sqrt(cov_ML[(2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb), (2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb)].diagonal())
+        ML_dict[f"clerr_bb_{comp}"] = np.sqrt(cov_ML[(2 + 2*j + 1)*len(lb):(2 + 2*j + 2)* len(lb), (2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb)].diagonal())
+        ML_dict[f"clcov_ee_{comp}"] = cov_ML[(2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb), (2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb)]
+        ML_dict[f"clcov_bb_{comp}"] = cov_ML[(2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb), (2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb)]
     return ML_dict
 
 
@@ -188,12 +188,12 @@ def main(args):
         "clcov_ee_cmb": ML_cov[0*len(lb):1*len(lb), 0*len(lb):1*len(lb)]
     }
     for j, comp in enumerate(components):
-        ML_dict[f"cl_ee_{comp}"] = ML_cl[(2 + j)*len(lb):(2 + j + 1)*len(lb)]
-        ML_dict[f"cl_bb_{comp}"] = ML_cl[(2 + j + 1)*len(lb):(2 + j + 2)*len(lb)]
-        ML_dict[f"clerr_ee_{comp}"] = np.sqrt(ML_cov[(2 + j)*len(lb):(2 + j + 1)*len(lb), (2 + j)*len(lb):(2 + j + 1)*len(lb)].diagonal())
-        ML_dict[f"clerr_bb_{comp}"] = np.sqrt(ML_cov[(2 + j + 1)*len(lb):(2 + j + 2)*len(lb), (2 + j + 1)*len(lb):(2 + j + 2)*len(lb)].diagonal())
-        ML_dict[f"clcov_ee_{comp}"] = ML_cov[(2 + j)*len(lb):(2 + j + 1)*len(lb), (2 + j)*len(lb):(2 + j + 1)*len(lb)]
-        ML_dict[f"clcov_bb_{comp}"] = ML_cov[(2 + j + 1)*len(lb):(2 + j + 2)*len(lb), (2 + j + 1)*len(lb):(2 + j + 2)*len(lb)]
+        ML_dict[f"cl_ee_{comp}"] = ML_cl[(2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb)]
+        ML_dict[f"cl_bb_{comp}"] = ML_cl[(2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb)]
+        ML_dict[f"clerr_ee_{comp}"] = np.sqrt(ML_cov[(2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb), (2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb)].diagonal())
+        ML_dict[f"clerr_bb_{comp}"] = np.sqrt(ML_cov[(2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb), (2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb)].diagonal())
+        ML_dict[f"clcov_ee_{comp}"] = ML_cov[(2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb), (2 + 2*j)*len(lb):(2 + 2*j + 1)*len(lb)]
+        ML_dict[f"clcov_bb_{comp}"] = ML_cov[(2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb), (2 + 2*j + 1)*len(lb):(2 + 2*j + 2)*len(lb)]
 
     comps_label = "_".join(requested_components)
     fname = f"MLBR_cls_lmin{args.lmin}_lmax{args.lmax}_{comps_label}"
