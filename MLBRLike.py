@@ -119,7 +119,7 @@ class BandpowerLike(Likelihood):
                     2*self.n_bins][i]
                 for idc, comp in enumerate(self.components):
                     _derived[f"Cb_{i}_{comp}"] = ps_ML_real[
-                        (2 + idc + 1)*self.n_bins:
-                        (2 + idc + 2)*self.n_bins][i]
+                        (2 + 2*idc + 1)*self.n_bins:
+                        (2 + 2*idc + 2)*self.n_bins][i]
 
         return -0.5 * chi2
